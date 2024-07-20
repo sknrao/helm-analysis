@@ -65,6 +65,7 @@ def read_services(file):
         return True
 
 def test_func(file):
+    found = False
     with open(file, 'r') as yfile:
         contents = yaml.safe_load(yfile)
         if contents:
@@ -76,10 +77,27 @@ def test_func(file):
                         print(file.split('/')[-2]+ ':' + contents['image']['repository'])
                 else:
                     print(file.split('/')[-2]+ ':' + contents['image'])
+                found = True
             else:
                 for key in list(contents.keys()):
                     if key.endswith('Image'):
                         print(file.split('/')[-2]+ ':' + key)
+                        found = True
+                    else:
+                        try:
+                            iterator = iter(contents[key])
+                        except TypeError:
+                            continue;
+                        else:
+                            if 'image' in contents[key]:
+                                if isinstance(contents[key]['image'], str):
+                                    print(file.split('/')[-2]+ ':' + contents[key]['image'])
+                                else:
+                                    print(file.split('/')[-2]+ ':' + contents[key]['image']['repository'])
+                                found = True
+        if not found:
+            print("NO IMAGE DEFN IN: " + file.split('/')[-2])
+
 
 
 
