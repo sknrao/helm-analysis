@@ -1,0 +1,16 @@
+********************* TOTAL CPU ******************
+12.749999999999998
+********************* TOTAL RAM ******************
+27.067999999999998
+********************* ClusterIP Service used by: ******************
+['policy-clamp-ac-http-ppnt', 'policy-clamp-ac-kserve-ppnt', 'policy-clamp-ac-a1pms-ppnt', 'policy-clamp-ac-pf-ppnt', 'policy-api', 'policy-clamp-ac-k8s-ppnt', 'policy-apex-pdp', 'policy-pap', 'policy-clamp-runtime-acm', 'mariadb-galera', 'network-name-gen', 'postgres', 'elasticsearch', 'master', 'timescaledb', 'message-router', 'cli', 'sdnc-ansible-server', 'dmaap-listener', 'chartmuseum', 'oom-cert-service', 'oauth2-proxy', 'helmmanager', 'informationservice', 'dmaapmediatorservice', 'odu-app-ics-version', 'dmaapadapterservice', 'rappmanager', 'capifcore', 'odu-app', 'policy-clamp-ac-dme-ppnt', 'rappcatalogueservice', 'a1controller']
+********************* NodePort Service used by: ******************
+['onap-app', 'dgbuilder', 'sdnc', 'sdnc-web', 'dcae-ves-collector', 'controlpanel', 'nonrtricgateway', 'policymanagementservice', 'servicemanager', 'oru-app', 'topology']
+********************* Other Service used by: ******************
+[]
+********************* Empty Values.yaml found in: ******************
+['common', 'dcaegen2-services-common', 'aux-common', 'ric-common', 'nonrtric-common']
+********************* No services are defined for these: ******************
+['policy', 'onap', 'roles-wrapper', 'readinessCheck', 'serviceAccount', 'logConfiguration', 'repositoryGenerator', 'mariadb-init', 'postgres-init', 'etcd-init', 'repository-wrapper', 'cmpv2Config', 'certManagerCertificate', 'dmaap', 'sdnc-prom', 'strimzi', 'strimzi-kafka-bridge', 'platform', 'keycloak-init', 'keycloak-config-cli', 'cmpv2-cert-provider', 'oauth2-proxy', 'dcaegen2-services', 'nonrtric', 'kong']
+********************* Service term is abused in these: ******************
+['mongo', 'curator', 'data', 'etcd', 'cassandra']
