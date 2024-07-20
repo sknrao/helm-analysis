@@ -3,6 +3,8 @@ import glob
 import yaml
 
 total_cpu = 0.0
+highest_cpu = 0.0
+highest_ram = 0.0
 total_ram = 0.0
 clusterip_services_list = []
 nodeport_services_list = []
@@ -14,6 +16,8 @@ random_service_list = []
 def read_resources(file):
     global total_cpu
     global total_ram
+    global highest_cpu
+    global highest_ram
     with open(file, 'r') as yfile:
         contents = yaml.safe_load(yfile)
         if contents:
@@ -22,12 +26,16 @@ def read_resources(file):
                     if 'cpu' in contents['resources']['small']['requests']:
                         cpu_value = contents['resources']['small']['requests']['cpu']
                         if isinstance(cpu_value, int):
-                            total_cpu = total_cpu + float(cpu_value)
-                        if isinstance(cpu_value, str):
-                            cvalue = float(float(cpu_value[:-1])/1000.0)
-                            total_cpu = total_cpu + cvalue
-                        if isinstance(cpu_value, float):
+                            cval = float(cpu_value)
+                            total_cpu = total_cpu + cval
+                        elif isinstance(cpu_value, str):
+                            cval = float(float(cpu_value[:-1])/1000.0)
+                            total_cpu = total_cpu + cval
+                        elif isinstance(cpu_value, float):
+                            cval = cpu_value
                             total_cpu = total_cpu + cpu_value
+                        if cval > highest_cpu:
+                            highest_cpu = cval
                     if 'memory' in contents['resources']['small']['requests']:
                         mem_value = contents['resources']['small']['requests']['memory']
                         if 'Mi' in mem_value[-2:]:
@@ -36,6 +44,8 @@ def read_resources(file):
                         if 'Gi' in mem_value[-2:]:
                             mvalue = float(mem_value[:-2])
                             total_ram = total_ram + mvalue
+                        if mvalue > highest_ram:
+                            highest_ram = mvalue
 
 def read_services(file):
     global clusterip_services_list
@@ -109,17 +119,18 @@ if __name__ == "__main__":
     #    print(file)
         #read_resources(file)
     with open("allfiles.txt", 'r') as ffile:
-        #filenames = ffile.readlines()
         filenames = ffile.read().splitlines()
         for file in filenames:
             test_func(file)
-            #has_values = read_services(file.rstrip())
-            #if has_values:
-            #    read_resources(file.rstrip())
-    print("********************* TOTAL CPU ******************")
+            has_values = read_services(file.rstrip())
+            if has_values:
+                read_resources(file.rstrip())
+    print("********************* TOTAL & MAX CPU ******************")
     print(total_cpu)
-    print("********************* TOTAL RAM ******************")
+    print(highest_cpu)
+    print("********************* TOTAL & MAX RAM ******************")
     print(total_ram)
+    print(highest_ram)
     print("********************* ClusterIP Service used by: ******************")
     print(clusterip_services_list)
     print("********************* NodePort Service used by: ******************")
