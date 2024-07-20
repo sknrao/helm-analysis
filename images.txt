@@ -1,0 +1,68 @@
+onap-app:<onap-app>:<1.2-STAGING-latest>
+policy:postgresImage
+policy-clamp-ac-http-ppnt:onap/policy-clamp-ac-http-ppnt:7.0.3
+policy-clamp-ac-kserve-ppnt:onap/policy-clamp-ac-kserve-ppnt:7.0.3
+policy-clamp-ac-a1pms-ppnt:onap/policy-clamp-ac-a1pms-ppnt:7.0.3
+policy-clamp-ac-pf-ppnt:onap/policy-clamp-ac-pf-ppnt:7.0.3
+policy-api:onap/policy-api:3.0.2
+policy-clamp-ac-k8s-ppnt:onap/policy-clamp-ac-k8s-ppnt:7.0.3
+policy-apex-pdp:onap/policy-apex-pdp:3.0.2
+policy-pap:onap/policy-pap:3.0.2
+policy-clamp-runtime-acm:onap/policy-clamp-runtime-acm:7.0.3
+mariadb-galera:bitnami/mariadb-galera:10.5.8
+mongo:library/mongo:4.4.10
+dgbuilder:onap/ccsdk-dgbuilder-image:1.5.1
+network-name-gen:onap/ccsdk-apps-ms-neng:1.4.0
+elasticsearch:bitnami/elasticsearch:7.9.3
+curator:bitnami/elasticsearch-curator:5.8.1-debian-9-r74
+data:bitnami/elasticsearch:7.9.3
+master:bitnami/elasticsearch:7.9.3
+etcd-init:bitnami/etcd:3.3.15
+timescaledb:timescale/timescaledb:2.5.1-pg14
+etcd:etcd-amd64:3.2.24
+cassandra:cassandra:3.11.4
+message-router:onap/dmaap/dmaap-mr:1.4.4
+cli:onap/cli:6.0.1
+sdnc:onap/sdnc-image:2.5.5
+sdnc-web:onap/sdnc-web-image:2.5.5
+sdnc-ansible-server:onap/sdnc-ansible-server-image:2.5.5
+dmaap-listener:onap/sdnc-dmaap-listener-image:2.5.5
+sdnc-prom:onap/music/prom:1.0.5
+keycloak-config-cli:adorsys/keycloak-config-cli
+chartmuseum:helm/chartmuseum:v0.13.1
+oom-cert-service:onap/org.onap.oom.platform.cert-service.oom-certservice-api:2.6.0
+oauth2-proxy:oauth2-proxy/oauth2-proxy
+dcae-ves-collector:onap/org.onap.dcaegen2.collectors.ves.vescollector:1.12.3
+helmmanager:nonrtric-plt-helmmanager
+informationservice:nonrtric-plt-informationcoordinatorservice
+dmaapmediatorservice:nonrtric-plt-dmaapmediatorproducer
+odu-app-ics-version:nexus3.o-ran-sc.org:10002/o-ran-sc/nonrtric-rapp-ransliceassurance-icsversion
+dmaapadapterservice:nonrtric-plt-dmaapadapter
+rappmanager:nonrtric-plt-rappmanager
+controlpanel:nonrtric-controlpanel
+capifcore:nonrtric-plt-capifcore
+nonrtricgateway:nonrtric-gateway
+odu-app:nexus3.o-ran-sc.org:10002/o-ran-sc/nonrtric-rapp-ransliceassurance
+policy-clamp-ac-dme-ppnt:nexus3.o-ran-sc.org:10002/o-ran-sc/nonrtric-plt-participant-impl-dme:0.0.1
+policymanagementservice:nonrtric-plt-a1policymanagementservice
+servicemanager:nonrtric-plt-servicemanager
+rappcatalogueservice:nonrtric-plt-rappcatalogue
+oru-app:nonrtric-rapp-orufhrecovery
+topology:smo-topology-api-v2
+a1controller:sdnc-image
+********************* TOTAL CPU ******************
+0.0
+********************* TOTAL RAM ******************
+0.0
+********************* ClusterIP Service used by: ******************
+[]
+********************* NodePort Service used by: ******************
+[]
+********************* Other Service used by: ******************
+[]
+********************* Empty Values.yaml found in: ******************
+[]
+********************* No services are defined for these: ******************
+[]
+********************* Service term is abused in these: ******************
+[]

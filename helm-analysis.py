@@ -64,6 +64,25 @@ def read_services(file):
             return False
         return True
 
+def test_func(file):
+    with open(file, 'r') as yfile:
+        contents = yaml.safe_load(yfile)
+        if contents:
+            if 'image' in contents:
+                if isinstance(contents['image'], dict):
+                    if 'name' in contents['image']:
+                        print(file.split('/')[-2]+ ':' + contents['image']['name'])
+                    else:
+                        print(file.split('/')[-2]+ ':' + contents['image']['repository'])
+                else:
+                    print(file.split('/')[-2]+ ':' + contents['image'])
+            else:
+                for key in list(contents.keys()):
+                    if key.endswith('Image'):
+                        print(file.split('/')[-2]+ ':' + key)
+
+
+
 
 if __name__ == "__main__":
     #for file in glob.glob("./onap_oom/**/values.yaml", recursive=True):
@@ -75,9 +94,10 @@ if __name__ == "__main__":
         #filenames = ffile.readlines()
         filenames = ffile.read().splitlines()
         for file in filenames:
-            has_values = read_services(file.rstrip())
-            if has_values:
-                read_resources(file.rstrip())
+            test_func(file)
+            #has_values = read_services(file.rstrip())
+            #if has_values:
+            #    read_resources(file.rstrip())
     print("********************* TOTAL CPU ******************")
     print(total_cpu)
     print("********************* TOTAL RAM ******************")
